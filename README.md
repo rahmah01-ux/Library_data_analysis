@@ -105,7 +105,7 @@ Delete: Removed records from the members table as needed.
 
 
 
---Q1 Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
+#Q1 Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
 
 INSERT INTO books(isbn, book_title, category, rental_price, status, author, publisher)
 VALUES
@@ -113,7 +113,7 @@ VALUES
 SELECT * 
 FROM books;
 
---Q2 Update an Existing Member's Address
+#Q2 Update an Existing Member's Address
 
 UPDATE members
 SET member_address = '125 Main St'
@@ -121,19 +121,19 @@ WHERE member_id = 'C101';
 SELECT * 
 FROM members;
 
---Q3 Delete a Record from the Issued Status Table -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+#Q3 Delete a Record from the Issued Status Table -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
 
 DELETE FROM issued_status
 WHERE issued_id = 'IS121'
 SELECT * 
 FROM issued_status;
 
--- Q4 Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+#Q4 Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
 SELECT *
 FROM issued_status
 WHERE issued_emp_id = 'E101';
 
---Q4 List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
+#Q4 List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
 
 SELECT issued_emp_id, COUNT(issued_id) AS total_book_issued
 FROM issued_status
@@ -141,7 +141,7 @@ GROUP BY issued_emp_id
 HAVING COUNT(*)> 1;
 
 
---Q5 Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
+#Q5 Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
 
 CREATE TABLE book_counts 
 AS 
@@ -160,14 +160,14 @@ FROM book_counts;
 FROM 
 
 
---Q7 Retrieve All Books in a Specific Category
+#Q7 Retrieve All Books in a Specific Category
 
 SELECT * 
 FROM books
 WHERE category = 'Classic'
 
 
---Q8 Find Total Rental Income by Category
+#Q8 Find Total Rental Income by Category
 
 SELECT 
 	b.category,
@@ -179,13 +179,13 @@ issued_status AS ist
 ON ist.issued_book_isbn = b.isbn
 GROUP BY 1; 
 
---Q9 List Members Who Registered in the Last 500 Days:
+#Q9 List Members Who Registered in the Last 500 Days:
 
 SELECT * 
 FROM members
 WHERE reg_date >= CURRENT_DATE - INTERVAL '500 days';
 
---Q10 List Employees with Their Branch Manager's Name and their branch details
+#Q10 List Employees with Their Branch Manager's Name and their branch details
 
 SELECT 
 	e.*,
@@ -199,7 +199,7 @@ JOIN employees as e2
 ON br.manager_id = e2.emp_id;
 
 
---Q11 Create a Table of Books with Rental Price Above a Certain Threshold 7 for example
+#Q11 Create a Table of Books with Rental Price Above a Certain Threshold 7 for example
 CREATE TABLE books_threshhold as
 SELECT * 
 FROM books
@@ -210,7 +210,7 @@ SELECT *
 FROM books_threshhold
 
 
---Q12 Retrieve the List of Books Not Yet Returned
+#Q12 Retrieve the List of Books Not Yet Returned
 
 SELECT * 
 FROM issued_status as ist
