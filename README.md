@@ -106,7 +106,7 @@ Delete: Removed records from the members table as needed.
 
 
 #Q1 Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
-
+```sql
 INSERT INTO books(isbn, book_title, category, rental_price, status, author, publisher)
 VALUES
 ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
@@ -114,7 +114,7 @@ SELECT *
 FROM books;
 
 #Q2 Update an Existing Member's Address
-
+```sql
 UPDATE members
 SET member_address = '125 Main St'
 WHERE member_id = 'C101';
