@@ -19,7 +19,8 @@ This project demonstrates the implementation of a Library Management System usin
 Project Structure
 1. Database Setup
 
-<img width="377" height="332" alt="Picture 1" src="https://github.com/user-attachments/assets/1ff642ed-e861-485d-91dd-1c94b8ecbfbc" />
+<img width="4640" height="2314" alt="database setup " src="https://github.com/user-attachments/assets/50db05ff-ea18-46a4-8ed7-537616205365" />
+
 
 
 
