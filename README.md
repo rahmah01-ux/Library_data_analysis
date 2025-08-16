@@ -3,7 +3,7 @@
 # Project Overview
 
 Project Title: Library Mangement System 
-Level" Intermediate
+Level = Intermediate
 Database: library_db
 
 
