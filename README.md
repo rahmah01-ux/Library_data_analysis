@@ -20,7 +20,7 @@ Advanced SQL Queries: Develop complex queries to analyse and retrieve specific d
 1. Database Setup
 
 <img width="4640" height="2314" alt="database setup " src="https://github.com/user-attachments/assets/50db05ff-ea18-46a4-8ed7-537616205365" />
-## Table Creation: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
+### Table Creation: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
 
 
 -- Library Management System Project 2
@@ -106,7 +106,7 @@ Delete: Removed records from the members table as needed.
 
 
 
-## Q1 Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
+### Q1 Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
 
 ```sql
 INSERT INTO books(isbn, book_title, category, rental_price, status, author, publisher)
@@ -116,7 +116,7 @@ SELECT *
 FROM books;
 ```
 
-## Q2 Update an Existing Member's Address
+### Q2 Update an Existing Member's Address
 ```sql
 UPDATE members
 SET member_address = '125 Main St'
@@ -125,20 +125,20 @@ SELECT *
 FROM members;
 ```
 
-## Q3 Delete a Record from the Issued Status Table -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+### Q3 Delete a Record from the Issued Status Table -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
 ```sql
 DELETE FROM issued_status
 WHERE issued_id = 'IS121'
 SELECT * 
 FROM issued_status;
 ```
-## Q4 Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+### Q4 Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
 ```sql
 SELECT *
 FROM issued_status
 WHERE issued_emp_id = 'E101';
 ```
-## Q5 List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
+### Q5 List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
 ```sql
 SELECT issued_emp_id, COUNT(issued_id) AS total_book_issued
 FROM issued_status
@@ -146,7 +146,7 @@ GROUP BY issued_emp_id
 HAVING COUNT(*)> 1;
 ```
 
-## Q6 Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
+### Q6 Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
 ```sql
 CREATE TABLE book_counts 
 AS 
@@ -164,15 +164,16 @@ SELECT *
 FROM book_counts;
 FROM 
 ```
-
-## Q7 Retrieve All Books in a Specific Category
+## Data Analysis & Findings
+The following SQL queries were used to address specific questions:
+### Q7 Retrieve All Books in a Specific Category
 ```sql
 SELECT * 
 FROM books
 WHERE category = 'Classic'
 ```
 
-## Q8 Find Total Rental Income by Category
+### Q8 Find Total Rental Income by Category
 ```sql
 SELECT 
 	b.category,
@@ -184,13 +185,13 @@ issued_status AS ist
 ON ist.issued_book_isbn = b.isbn
 GROUP BY 1; 
 ```
-## Q9 List Members Who Registered in the Last 500 Days:
+### Q9 List Members Who Registered in the Last 500 Days:
 ```sql
 SELECT * 
 FROM members
 WHERE reg_date >= CURRENT_DATE - INTERVAL '500 days';
 ```
-## Q10 List Employees with Their Branch Manager's Name and their branch details
+### Q10 List Employees with Their Branch Manager's Name and their branch details
 ```sql
 SELECT 
 	e.*,
@@ -204,7 +205,7 @@ JOIN employees as e2
 ON br.manager_id = e2.emp_id;
 ```
 
-## Q11 Create a Table of Books with Rental Price Above a Certain Threshold 7 for example
+### Q11 Create a Table of Books with Rental Price Above a Certain Threshold 7 for example
 ```sql
 CREATE TABLE books_threshhold as
 SELECT * 
@@ -216,7 +217,7 @@ SELECT *
 FROM books_threshhold
 ```
 
-## Q12 Retrieve the List of Books Not Yet Returned
+### Q12 Retrieve the List of Books Not Yet Returned
 ```sql
 SELECT * 
 FROM issued_status as ist
